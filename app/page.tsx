@@ -42,8 +42,8 @@ export default function Home() {
           💞 Obrigado, Minha princesa💞
         </h1>
         <p className="text-xl max-w-md text-pink-700">
-          Prometo tentar ser sempre alguém que te dá paz, carinho e risadas...  
-          e nunca motivos pra ficar triste comigo. 🌸✨
+          Prometo tentar ser sempre alguém que te dá paz, carinho e risadas,  
+          e nunca motivos pra ficar triste comigo, eu te amo muito! 🌸✨
         </p>
       </main>
     );
