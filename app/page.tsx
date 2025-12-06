@@ -1,65 +1,94 @@
-import Image from "next/image";
+"use client";
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+  const frases = [
+    "Eu sei que às vezes eu sou meio lesado 😔",
+    "Mas eu juro que eu tento ser melhor por você 💖",
+    "Porque você é especial pra mim de um jeito bobo e lindo ✨",
+    "E eu odeio te ver triste comigo 😢",
+    "Então…",
+    "Me perdoa? 🥺💕"
+  ];
+
+  const [index, setIndex] = useState(0);
+  const [perdoou, setPerdoou] = useState(false);
+
+  function proximo() {
+    if (index < frases.length - 1) setIndex(index + 1);
+  }
+
+  // ---- SPAWN DE CORAÇÕES ----
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const heart = document.createElement("div");
+      heart.innerText = "💗";
+      heart.className =
+        "absolute animate-fall text-pink-500 pointer-events-none select-none";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // ---- TELA FINAL ----
+  if (perdoou) {
+    return (
+      <main className="bg-pink-100 flex flex-col items-center justify-center min-h-screen px-6 text-center">
+        <h1 className="text-4xl font-bold text-pink-600 mb-6 animate-bounce">
+          💞 Obrigado, Ayumi 💞
+        </h1>
+        <p className="text-xl max-w-md text-pink-700">
+          Prometo tentar ser sempre alguém que te dá paz, carinho e risadas...  
+          e nunca motivos pra ficar triste comigo. 🌸✨
+        </p>
       </main>
-    </div>
+    );
+  }
+
+  return (
+    <main className="bg-pink-100 flex flex-col items-center justify-center min-h-screen px-6">
+      <h1 className="text-4xl font-extrabold text-pink-700 mb-10 drop-shadow-sm">
+
+        🌸 Desculpa, Ayumi 🌸
+      </h1>
+
+   <div className="max-w-md bg-white/90 backdrop-blur-md p-14 rounded-[45px] border-[3px] border-pink-300 container-fofo text-center mt-10">
+
+
+
+
+       <p className="text-xl font-medium mb-6 text-pink-800 px-6 leading-relaxed">
+
+
+          {frases[index]}
+        </p>
+
+        {index < frases.length - 1 && (
+          <button
+            onClick={proximo}
+            className="px-6 py-3 rounded-full bg-pink-500 text-white font-bold hover:bg-pink-600 transition"
+          >
+            💗
+          </button>
+        )}
+
+        {index === frases.length - 1 && (
+          <button
+            onClick={() => setPerdoou(true)}
+            className="container-fofo1"
+          >
+            Sim, eu te perdoo 💞
+          </button>
+        )}
+      </div>
+
+      <footer className="mt-10 opacity-60 text-sm text-pink-700">
+        Feito com carinho por um bobo apaixonado por você 🫶
+      </footer>
+    </main>
   );
 }
