@@ -39,7 +39,7 @@ export default function Home() {
     return (
       <main className="bg-pink-100 flex flex-col items-center justify-center min-h-screen px-6 text-center">
         <h1 className="text-4xl font-bold text-pink-600 mb-6 animate-bounce">
-          💞 Obrigado, Ayumi 💞
+          💞 Obrigado, Minha princesa💞
         </h1>
         <p className="text-xl max-w-md text-pink-700">
           Prometo tentar ser sempre alguém que te dá paz, carinho e risadas...  
@@ -53,7 +53,7 @@ export default function Home() {
     <main className="bg-pink-100 flex flex-col items-center justify-center min-h-screen px-6">
       <h1 className="text-4xl font-extrabold text-pink-700 mb-10 drop-shadow-sm">
 
-        🌸 Desculpa, Ayumi 🌸
+        🌸 Desculpa, Amor 🌸
       </h1>
 
    <div className="max-w-md bg-white/90 backdrop-blur-md p-14 rounded-[45px] border-[3px] border-pink-300 container-fofo text-center mt-10">
