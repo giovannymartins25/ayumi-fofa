@@ -81,7 +81,7 @@ export default function Home() {
             onClick={() => setPerdoou(true)}
             className="container-fofo1"
           >
-            Sim, eu te perdoo 💞
+            Sim, eu te perdoo ❤️
           </button>
         )}
       </div>
